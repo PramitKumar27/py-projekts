@@ -2,8 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-html_text = requests.get(
-    'https://www.linkedin.com/jobs/search/?currentJobId=3446717669&keywords=python%20jobs%20berlin').text
+html_text = requests.get("https: // www.xing.com/discover/updates").text
 
 soup = BeautifulSoup(html_text, 'lxml')
 
