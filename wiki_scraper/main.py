@@ -5,13 +5,15 @@ from bs4 import BeautifulSoup
 inp = input("Search: ")
 ui = string.capwords(inp)
 
+# capwords capitalizes every word first letter
+
 lists = ui.split()
 word = "_".join(lists)
 
 url = "https://en.wikipedia.org/wiki/"+word
 
 
-def wikibot(url):
+def wikiBot(url):
     url_open = requests.get(url)
     soup = BeautifulSoup(url_open.content, "html.parser")
     details = soup('table', {'class': 'infobox'})
@@ -28,4 +30,4 @@ def wikibot(url):
         print(soup('p')[i].text)
 
 
-wikibot(url)
+wikiBot(url)
