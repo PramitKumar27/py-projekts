@@ -28,6 +28,26 @@ def info(url):
         print(soup('p')[i].text)
 
 
+def disco(url1):
+    url_open = requests.get(url1)
+    soup = BeautifulSoup(url_open.content, "html.parser")
+    details = soup('table', {'class': 'wikitable'})
+    for i in details:
+        h = i.find_all('th')
+        d = i.find_all('td')
+        if h is not None and d is not None:
+            for x, y in zip(h, d):
+                print("{} :: {}".format(x.text, y.text))
+                print("----------------------------------------------")
+
+
 if __name__ == "__main__":
     print("Here is the basic info regarding: {0}".format(word))
-    info(url)
+    inp = input("Do you want to know basic info? Y/N ")
+    if inp == "Y":
+        print("Here is the basic info regarding: {0}".format(s1))
+        info(url)
+    inp1 = input("Do you want to know discography? Y/N ")
+    if inp1 == "Y":
+        print("Here is {}'s discography :: ".format(s1))
+        disco(url1)
