@@ -31,23 +31,33 @@ def info(url):
 def disco(url1):
     url_open = requests.get(url1)
     soup = BeautifulSoup(url_open.content, "html.parser")
-    details = soup('table', {'class': 'wikitable'})
-    for i in details:
-        h = i.find_all('th')
-        d = i.find_all('td')
-        if h is not None and d is not None:
-            for x, y in zip(h, d):
-                print("{} :: {}".format(x.text, y.text))
-                print("----------------------------------------------")
+    s = soup.find_all('caption')
+    for caption in s:
+        if 'studio albums' in caption.get_text():
+            table = caption.find_parent(
+                'table', {'class': 'wikitable plainrowheaders'})
+            r = table.find_all('tr')
+            a = 0
+            for i in r:
+                h = i.find_all('th')
+
+                for x in h:
+                    if a > 0:
+                        if "[" not in x.text:
+                            if x is not None:
+                                print("{} :: ".format(x.text))
+                                print("---------------")
+                    if "Certifications" in x.text:
+                        a = 1
 
 
 if __name__ == "__main__":
-    print("Here is the basic info regarding: {0}".format(word))
+
     inp = input("Do you want to know basic info? Y/N ")
     if inp == "Y":
-        print("Here is the basic info regarding: {0}".format(s1))
+        print("Here is the basic info regarding: {0}".format(word))
         info(url)
     inp1 = input("Do you want to know discography? Y/N ")
     if inp1 == "Y":
-        print("Here is {}'s discography :: ".format(s1))
+        print("Here is {0}'s discography :: ".format(word))
         disco(url1)
