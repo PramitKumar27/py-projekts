@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup
 inp = input("Search: ")
 ui = string.capwords(inp)
 
-# capwords capitalizes every word first letter
 
 lists = ui.split()
 word = "_".join(lists)
