@@ -20,7 +20,7 @@ def countdown(h, m, s):
         # Reduces total time by one second
         total_seconds -= 1
 
-    print("Bzzzt! The countdown is at zero seconds!")
+    print("Bzzzt! The countdown has stopped!")
 
 
 # Inputs for hours, minutes, seconds on timer
