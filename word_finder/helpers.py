@@ -9,3 +9,11 @@ def get_files_path(extension='.txt'):
                        for f in os.listdir(files_path) if f.endswith(extension)]
 
     return files_full_path
+
+
+def find_word_in_files(str_to_find=None):
+    all_files = get_files_path()
+    for file in all_files:
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            print(len(lines))

@@ -1,4 +1,4 @@
 from helpers import *
 
 if __name__ == "__main__":
-    print(get_files_path())
+    print(find_word_in_files())
